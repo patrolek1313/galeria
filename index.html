@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>photobłoto - galeria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --las:#16241B;        /* gleboka lesna zielen - tlo */
+    --las-2:#1E3226;      /* nieco jasniejsza zielen - warstwy */
+    --mech:#6B7F38;       /* oliwkowo-mchowa zielen - akcent */
+    --bez:#F0E8D6;        /* swietlisty bez */
+    --zloto:#C9A860;      /* cieple zloto - akcent */
+    --kremowa:#F3EEE1;    /* kremowa biel - tekst na ciemnym */
+    --gap:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--las);
+    color:var(--kremowa);
+    font-family:'Josefin Sans',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+
+  /* --- naglowek --- */
+  header{
+    padding:44px 24px 8px;
+    text-align:center;
+  }
+  .wordmark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,5vw,3.1rem);
+    font-weight:500;
+    letter-spacing:.01em;
+    color:var(--bez);
+  }
+  .podpis{
+    font-size:.82rem;
+    letter-spacing:.18em;
+    color:var(--zloto);
+    margin-top:6px;
+    font-weight:400;
+  }
+
+  /* --- zakladki kategorii --- */
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px 28px;
+    padding:26px 20px 30px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:linear-gradient(var(--las) 62%, rgba(22,36,27,0));
+    backdrop-filter:blur(2px);
+  }
+  nav button{
+    background:none;border:none;cursor:pointer;
+    font-family:'Josefin Sans',sans-serif;
+    font-size:1rem;font-weight:400;
+    color:var(--kremowa);
+    opacity:.6;
+    padding:4px 2px;
+    position:relative;
+    transition:opacity .3s ease;
+    letter-spacing:.02em;
+  }
+  nav button::after{
+    content:'';position:absolute;left:0;right:0;bottom:-5px;height:2px;
+    background:var(--zloto);transform:scaleX(0);transform-origin:center;
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  nav button:hover{opacity:.9}
+  nav button.aktywna{opacity:1;color:var(--bez)}
+  nav button.aktywna::after{transform:scaleX(1)}
+
+  /* --- siatka masonry --- */
+  main{padding:0 24px 90px;max-width:1500px;margin:0 auto}
+  .siatka{column-count:3;column-gap:var(--gap)}
+  @media(max-width:1050px){.siatka{column-count:2}}
+  @media(max-width:620px){.siatka{column-count:1}}
+
+  figure.kadr{
+    break-inside:avoid;
+    margin:0 0 var(--gap);
+    position:relative;
+    overflow:hidden;
+    background-size:cover;background-position:center;
+    cursor:pointer;
+    opacity:0;transform:translateY(16px);
+    transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  figure.kadr.w-widoku{opacity:1;transform:none}
+  figure.kadr img{
+    display:block;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .7s ease;
+  }
+  figure.kadr img.zaladowane{opacity:1}
+  figure.kadr::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(22,36,27,.45));
+    opacity:0;transition:opacity .4s ease;z-index:1;
+  }
+  figure.kadr:hover img{transform:scale(1.035)}
+  figure.kadr img{transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  figure.kadr:hover::before{opacity:1}
+
+  /* --- lightbox --- */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(11,18,14,.94);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .4s ease;
+    padding:28px;
+  }
+  .lightbox.otwarty{opacity:1;pointer-events:auto}
+  .lightbox img{
+    max-width:100%;max-height:100%;object-fit:contain;
+    transform:scale(.96);transition:transform .4s cubic-bezier(.2,.7,.2,1);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+  }
+  .lightbox.otwarty img{transform:scale(1)}
+  .lb-btn{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:none;border:none;color:var(--kremowa);
+    font-size:2.4rem;cursor:pointer;opacity:.6;transition:opacity .25s ease;
+    padding:14px;line-height:1;user-select:none;
+  }
+  .lb-btn:hover{opacity:1}
+  .lb-prev{left:8px}.lb-next{right:8px}
+  .lb-zamknij{
+    position:absolute;top:18px;right:22px;font-size:1.9rem;
+    background:none;border:none;color:var(--kremowa);cursor:pointer;
+    opacity:.6;transition:opacity .25s ease;line-height:1;
+  }
+  .lb-zamknij:hover{opacity:1}
+  .lb-licznik{
+    position:absolute;bottom:22px;left:0;right:0;text-align:center;
+    font-size:.85rem;letter-spacing:.15em;color:var(--zloto);
+  }
+
+  /* --- stan bledu / pusto --- */
+  .info{
+    max-width:560px;margin:12vh auto;padding:0 24px;text-align:center;
+    font-size:1.02rem;line-height:1.7;color:var(--kremowa);opacity:.85;
+  }
+  .info b{color:var(--zloto);font-weight:500}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    figure.kadr{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">photobłoto</div>
+    <div class="podpis">Kasia Chera</div>
+  </header>
+
+  <nav id="zakladki"></nav>
+  <main><div class="siatka" id="siatka"></div></main>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lb-zamknij" aria-label="Zamknij">&times;</button>
+    <button class="lb-btn lb-prev" aria-label="Poprzednie">&#8249;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-btn lb-next" aria-label="Nastepne">&#8250;</button>
+    <div class="lb-licznik" id="lb-licznik"></div>
+  </div>
+
+<!-- plynne scrollowanie (opcjonalne - jesli sie nie wczyta, strona i tak dziala) -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  // Jesli galeria.html lezy w folderze "gotowe" obok manifest.json - zostaw BASE puste.
+  // Jesli lezy gdzie indziej, wpisz sciezke do folderu, np. 'gotowe/'.
+  const BASE = '';
+
+  const $siatka = document.getElementById('siatka');
+  const $zakladki = document.getElementById('zakladki');
+  let dane = [];
+  let aktualna = [];      // zdjecia aktualnej kategorii (do lightboxa)
+  let lbIndex = 0;
+
+  fetch(BASE + 'manifest.json')
+    .then(r => { if(!r.ok) throw new Error('brak'); return r.json(); })
+    .then(m => {
+      dane = m.filter(k => k.zdjecia && k.zdjecia.length);
+      if(!dane.length) return pokazInfo('Manifest jest pusty - dodaj zdjecia do folderow i uruchom skrypt jeszcze raz.');
+      zbudujZakladki();
+      pokazKategorie(dane[0]);
+    })
+    .catch(() => pokazInfo(
+      'Nie znaleziono <b>manifest.json</b>.<br><br>' +
+      'Umiesc ten plik w folderze <b>gotowe</b> (obok manifest.json), ' +
+      'i otworz strone przez serwer - np. wrzuc na GitHub Pages, ' +
+      'albo lokalnie uruchom <b>python -m http.server</b> w tym folderze. ' +
+      'Przegladarka nie wczyta pliku otwartego wprost z dysku.'
+    ));
+
+  function zbudujZakladki(){
+    dane.forEach((kat, i) => {
+      const b = document.createElement('button');
+      b.textContent = kat.kategoria;
+      b.className = i === 0 ? 'aktywna' : '';
+      b.onclick = () => {
+        [...$zakladki.children].forEach(x => x.classList.remove('aktywna'));
+        b.classList.add('aktywna');
+        pokazKategorie(kat);
+        window.scrollTo({top:0,behavior:'smooth'});
+      };
+      $zakladki.appendChild(b);
+    });
+  }
+
+  function pokazKategorie(kat){
+    aktualna = kat.zdjecia;
+    $siatka.innerHTML = '';
+    kat.zdjecia.forEach((z, idx) => {
+      const fig = document.createElement('figure');
+      fig.className = 'kadr';
+      if(z.szerokosc && z.wysokosc) fig.style.aspectRatio = z.szerokosc + '/' + z.wysokosc;
+      if(z.placeholder) fig.style.backgroundImage = 'url(' + z.placeholder + ')';
+
+      const img = new Image();
+      img.loading = 'lazy';
+      img.alt = kat.kategoria;
+      img.src = BASE + z.mini;
+      img.onload = () => img.classList.add('zaladowane');
+      fig.appendChild(img);
+
+      fig.onclick = () => otworzLightbox(idx);
+      $siatka.appendChild(fig);
+      obserwator.observe(fig);
+    });
+  }
+
+  // --- ujawnianie przy scrollu ---
+  const obserwator = new IntersectionObserver((wpisy) => {
+    wpisy.forEach((w, i) => {
+      if(w.isIntersecting){
+        w.target.style.transitionDelay = Math.min(i * 55, 220) + 'ms';
+        w.target.classList.add('w-widoku');
+        obserwator.unobserve(w.target);
+      }
+    });
+  }, {rootMargin:'0px 0px -8% 0px'});
+
+  // --- lightbox ---
+  const $lb = document.getElementById('lightbox');
+  const $lbImg = document.getElementById('lb-img');
+  const $licznik = document.getElementById('lb-licznik');
+
+  function otworzLightbox(i){
+    lbIndex = i;
+    ustawLb();
+    $lb.classList.add('otwarty');
+    document.body.style.overflow = 'hidden';
+  }
+  function ustawLb(){
+    const z = aktualna[lbIndex];
+    $lbImg.src = BASE + z.duze;
+    $licznik.textContent = (lbIndex+1) + ' / ' + aktualna.length;
+  }
+  function zamknij(){ $lb.classList.remove('otwarty'); document.body.style.overflow=''; }
+  function nast(){ lbIndex = (lbIndex+1) % aktualna.length; ustawLb(); }
+  function poprz(){ lbIndex = (lbIndex-1+aktualna.length) % aktualna.length; ustawLb(); }
+
+  document.querySelector('.lb-zamknij').onclick = zamknij;
+  document.querySelector('.lb-next').onclick = (e)=>{e.stopPropagation();nast();};
+  document.querySelector('.lb-prev').onclick = (e)=>{e.stopPropagation();poprz();};
+  $lb.onclick = (e)=>{ if(e.target === $lb) zamknij(); };
+
+  document.addEventListener('keydown', (e)=>{
+    if(!$lb.classList.contains('otwarty')) return;
+    if(e.key === 'Escape') zamknij();
+    if(e.key === 'ArrowRight') nast();
+    if(e.key === 'ArrowLeft') poprz();
+  });
+
+  // swipe na telefonie
+  let x0 = null;
+  $lb.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  $lb.addEventListener('touchend', e => {
+    if(x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if(dx < -45) nast(); else if(dx > 45) poprz();
+    x0 = null;
+  }, {passive:true});
+
+  function pokazInfo(html){
+    $zakladki.style.display='none';
+    document.querySelector('main').innerHTML = '<p class="info">' + html + '</p>';
+  }
+
+  // plynne scrollowanie, jesli Lenis sie wczytal
+  if(window.Lenis && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const lenis = new Lenis({duration:1.1,smoothWheel:true});
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  }
+</script>
+</body>
+</html>
