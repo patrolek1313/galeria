@@ -204,7 +204,8 @@ section{position:relative}
 .browser-bar i{width:9px;height:9px;border-radius:50%;background:var(--faint)}
 .browser-bar i:first-child{background:var(--lime)}
 .browser-bar span{margin-left:12px;font-size:.72rem;color:var(--muted);letter-spacing:.04em}
-.screen{position:relative;aspect-ratio:16/10;background:var(--bg-3) center/cover no-repeat}
+.screen{position:relative;aspect-ratio:16/10;background:var(--bg-3)}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* po najechaniu: pełny zrzut strony przewija się w „przeglądarce” */
 .screen::after{content:'';position:absolute;inset:0;background-image:var(--tall);background-size:100% auto;background-position:50% 0;background-repeat:no-repeat;opacity:0;transition:opacity .5s,background-position 6s ease-in-out}
 .card:hover .screen::after{opacity:1;background-position:50% 100%}
@@ -225,9 +226,6 @@ section{position:relative}
 .how{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,100px);margin-top:clamp(90px,11vw,150px);align-items:start}
 .how-intro{position:sticky;top:100px}
 .how-intro p{color:var(--muted);max-width:30em}
-.how-rules{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
-.how-rules li{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding:12px 0;color:var(--muted)}
-.how-rules b{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--ink)}
 .steps{list-style:none;position:relative}
 .steps::before,.steps::after{content:'';position:absolute;left:23px;top:24px;width:2px}
 .steps::before{bottom:24px;background:var(--faint)}
@@ -308,13 +306,15 @@ section{position:relative}
 .portrait figcaption em{color:var(--lime)}
 .about-txt p{color:var(--muted);margin-bottom:1.1em;max-width:36em}
 .about-txt p.big{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.2;color:var(--ink);margin-bottom:1em}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:38px}
+.quad > div{background:var(--bg);padding:20px 22px 24px}
+.quad b{font-family:var(--display);font-weight:400;font-size:.85rem;color:var(--lime)}
+.quad h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:1.1rem;line-height:1.05;margin:10px 0 8px}
+.quad p{font-size:.9rem;color:var(--muted);margin:0}
+@media (max-width:620px){.quad{grid-template-columns:1fr}}
 .creds{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 44px}
 .creds span{border:1px solid var(--emerald);color:var(--emerald-hi);border-radius:99px;padding:7px 14px;font-stretch:80%;font-weight:600;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase}
-.also{border-top:1px solid var(--line)}
-.also li{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
-.also h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:1.02rem;line-height:1.15}
-.also p{font-size:.93rem;color:var(--muted);margin:0}
-@media (max-width:900px){.about{grid-template-columns:1fr}.portrait{position:relative;top:0;max-width:520px}.also li{grid-template-columns:1fr;gap:6px}}
+@media (max-width:900px){.about{grid-template-columns:1fr}.portrait{position:relative;top:0;max-width:520px}}
 
 /* ---------- kontakt ---------- */
 .contact{padding-block:clamp(110px,14vw,200px) clamp(40px,5vw,60px);text-align:left;overflow:hidden}
@@ -439,7 +439,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 
   </div>
 
-  <div class="carousel rv">
+  <div class="carousel">
     <div class="track" id="track" tabindex="0" aria-label="Realizacje – przewiń w poziomie"></div>
     <div class="wrap car-ui">
       <div class="car-count" id="carCount">01 <span>/ 05</span></div>
@@ -453,25 +453,19 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   <div class="wrap">
 
     <div class="how">
-      <div class="how-intro rv">
+      <div class="how-intro">
         <div class="label">Schemat pracy</div>
         <h3 class="h2 sm">Jak powstaje <span class="serif">strona z charakterem?</span></h3>
         <p>Nie zaczynam od wyboru szablonu, tylko od człowieka i celu. Każdy etap kończy się konkretnym efektem, który widzisz i akceptujesz, zanim ruszymy dalej. Dzięki temu na końcu nie ma niespodzianek.</p>
-        <ul class="how-rules">
-          <li><b>Cel</b> przed kolorem</li>
-          <li><b>Struktura</b> przed zdjęciem</li>
-          <li><b>Ruch</b> prowadzący uwagę</li>
-          <li><b>Testy</b> na prawdziwych ludziach</li>
-        </ul>
       </div>
       <ol class="steps" id="steps">
-      <li class="rv"><span class="dot">01</span><div><h4>Rozmowa i analiza</h4><p>Poznaję Ciebie, Twój biznes i ludzi, do których mówisz. Przeglądamy konkurencję i odpowiadamy na pytanie: po co ktoś wejdzie na tę stronę i co ma na niej zrobić?</p><dl><div><dt>Efekt</dt><dd>Brief: cele, odbiorcy i zakres strony</dd></div><div><dt>Twój udział</dt><dd>Rozmowa – najlepiej przy kawie</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">02</span><div><h4>Struktura i UX</h4><p>Zanim pojawi się kolor, projektuję logikę: architekturę treści, ścieżki użytkownika i wireframe’y. Wiemy, co jest gdzie i dlaczego.</p><dl><div><dt>Efekt</dt><dd>Mapa strony i makiety układu</dd></div><div><dt>Twój udział</dt><dd>Akceptacja układu</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">03</span><div><h4>Treści i zdjęcia</h4><p>Strona jest tak dobra, jak jej treść. Pomagam uporządkować teksty, a zdjęcia mogę zrobić sama – bez stockowych uśmiechów.</p><dl><div><dt>Efekt</dt><dd>Komplet tekstów i zdjęć</dd></div><div><dt>Twój udział</dt><dd>Wiedza o firmie i materiały</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">04</span><div><h4>Charakter – projekt UI</h4><p>Kolor, typografia, zdjęcia, przestrzeń i detale. Interfejs spójny z marką, a nie kolejna gotowa strona z internetu.</p><dl><div><dt>Efekt</dt><dd>Projekt kluczowych widoków na komputer i telefon</dd></div><div><dt>Twój udział</dt><dd>Uwagi i akceptacja</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">05</span><div><h4>Budowa i ruch</h4><p>Kodowanie, wersja mobilna, animacje i mikrointerakcje. Ruch prowadzi uwagę i buduje hierarchię, a nie tylko „ładnie wygląda”.</p><dl><div><dt>Efekt</dt><dd>Działająca strona w wersji testowej</dd></div><div><dt>Twój udział</dt><dd>Klikasz i komentujesz</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">06</span><div><h4>Testy i start</h4><p>Różne urządzenia i przeglądarki, szybkość ładowania, podstawy SEO i formularze. Potem domena, publikacja i analityka.</p><dl><div><dt>Efekt</dt><dd>Strona online</dd></div><div><dt>Twój udział</dt><dd>Zielone światło</dd></div></dl></div></li>
-      <li class="rv"><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończy się na premierze. Jeśli projekt tego wymaga, zostaję przy aktualizacjach, treściach i kolejnych zmianach.</p><dl><div><dt>Efekt</dt><dd>Strona, która rośnie razem z firmą</dd></div><div><dt>Twój udział</dt><dd>Nowe pomysły</dd></div></dl></div></li>
+$1<li><span class="dot">01</span><div><h4>Rozmowa i analiza</h4><p>Poznaję Ciebie, Twój biznes i ludzi, do których mówisz. Przeglądamy konkurencję i odpowiadamy na pytanie: po co ktoś wejdzie na tę stronę i co ma na niej zrobić?</p><dl><div><dt>Efekt</dt><dd>Brief: cele, odbiorcy i zakres strony</dd></div><div><dt>Twój udział</dt><dd>Rozmowa – najlepiej przy kawie</dd></div></dl></div></li>
+$1<li><span class="dot">02</span><div><h4>Struktura i UX</h4><p>Zanim pojawi się kolor, projektuję logikę: architekturę treści, ścieżki użytkownika i wireframe’y. Wiemy, co jest gdzie i dlaczego.</p><dl><div><dt>Efekt</dt><dd>Mapa strony i makiety układu</dd></div><div><dt>Twój udział</dt><dd>Akceptacja układu</dd></div></dl></div></li>
+$1<li><span class="dot">03</span><div><h4>Treści i zdjęcia</h4><p>Strona jest tak dobra, jak jej treść. Pomagam uporządkować teksty, a zdjęcia mogę zrobić sama – bez stockowych uśmiechów.</p><dl><div><dt>Efekt</dt><dd>Komplet tekstów i zdjęć</dd></div><div><dt>Twój udział</dt><dd>Wiedza o firmie i materiały</dd></div></dl></div></li>
+$1<li><span class="dot">04</span><div><h4>Charakter – projekt UI</h4><p>Kolor, typografia, zdjęcia, przestrzeń i detale. Interfejs spójny z marką, a nie kolejna gotowa strona z internetu.</p><dl><div><dt>Efekt</dt><dd>Projekt kluczowych widoków na komputer i telefon</dd></div><div><dt>Twój udział</dt><dd>Uwagi i akceptacja</dd></div></dl></div></li>
+$1<li><span class="dot">05</span><div><h4>Budowa i ruch</h4><p>Kodowanie, wersja mobilna, animacje i mikrointerakcje. Ruch prowadzi uwagę i buduje hierarchię, a nie tylko „ładnie wygląda”.</p><dl><div><dt>Efekt</dt><dd>Działająca strona w wersji testowej</dd></div><div><dt>Twój udział</dt><dd>Klikasz i komentujesz</dd></div></dl></div></li>
+$1<li><span class="dot">06</span><div><h4>Testy i start</h4><p>Różne urządzenia i przeglądarki, szybkość ładowania, podstawy SEO i formularze. Potem domena, publikacja i analityka.</p><dl><div><dt>Efekt</dt><dd>Strona online</dd></div><div><dt>Twój udział</dt><dd>Zielone światło</dd></div></dl></div></li>
+$1<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończy się na premierze. Jeśli projekt tego wymaga, zostaję przy aktualizacjach, treściach i kolejnych zmianach.</p><dl><div><dt>Efekt</dt><dd>Strona, która rośnie razem z firmą</dd></div><div><dt>Twój udział</dt><dd>Nowe pomysły</dd></div></dl></div></li>
       </ol>
     </div>
   </div>
@@ -566,15 +560,17 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
     </figure>
     <div class="about-txt rv">
       <div class="label"><span class="n">05</span>O mnie</div>
-      <h2 class="h2 sm">Koń, błoto <span class="serif">i milion sukienek.</span></h2>
-      <p class="big">„Chera” to skrót imienia mojego ukochanego konia. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu – namioty i sprzęt.</p>
-      <p>Jestem Katarzyna Wójcik. Doktor chemii, project managerka, pilot rajdowy. Aparat jedzie ze mną wszędzie – w błoto, na wyścigi, na wesela i wydarzenia, na Autodrom Jastrząb. Zamykam w kadrach momenty, które wypełniają życie fantastycznymi ludźmi i pięknymi emocjami.</p>
+      <p class="big">Pracuję na styku operacji, transformacji, ludzi i doświadczeń. Lubię sytuacje, w których trzeba połączyć wiele elementów, podjąć decyzję i po prostu dowieźć temat do końca.</p>
+      <p>Nie mam jednej zawodowej ścieżki. I właśnie dlatego potrafię patrzeć na problem z kilku stron jednocześnie.</p>
+      <p>„Chera” to skrót imienia mojego ukochanego konia z dzieciństwa. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu – namioty i sprzęt wyprawowy.</p>
+      <p>Jestem Katarzyna Wójcik. Doktor chemii, project managerka, pilot rajdowy, projektantka stron internetowych. Aparat jedzie ze mną wszędzie – w błoto, na wyścigi, na wesela i wydarzenia. Zamykam w kadrach momenty, które wypełniają życie fantastycznymi ludźmi i pięknymi emocjami.</p>
       <p>W czasach, gdy niemal wszystko można wygenerować sztuczną inteligencją, staram się zachować tę odrobinę duszy zamkniętą w kadrze.</p>
-      <ul class="also">
-        <li><h4>Motorsport</h4><p>Pilot rajdowy. Od ponad dekady od środka, nie z trybun: presja czasu, decyzje i odpowiedzialność w jednym miejscu.</p></li>
-        <li><h4>Fundacje</h4><p>Współzałożycielka Fundacji Inteligentna Transformacja (AI i kompetencje przyszłości, wsparcie kobiet 40+) oraz MotoMind &amp; Heart (bezpieczeństwo na drodze).</p></li>
-        <li><h4>TIYATI</h4><p>Współtworzę markę transparentnych perfum na bazie wody, bez alkoholu, z wegańską linią do pielęgnacji.</p></li>
-      </ul>
+      <div class="quad">
+        <div><b>01</b><h4>Operations</h4><p>Porządkuję złożone rzeczy, łączę ludzi i procesy, i pilnuję, żeby plan zamienił się w działanie.</p></div>
+        <div><b>02</b><h4>Transformation</h4><p>Pomagam zmieniać sposób działania, kiedy dotychczasowe rozwiązania przestają wystarczać.</p></div>
+        <div><b>03</b><h4>People &amp; Experience</h4><p>Pracuję z ludźmi i wokół ludzi. Buduję doświadczenia, które mają sens dla uczestników i organizacji.</p></div>
+        <div><b>04</b><h4>Motorsport</h4><p>Środowisko, w którym organizacja, decyzje, presja czasu i odpowiedzialność spotykają się w jednym miejscu.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -703,7 +699,7 @@ track.innerHTML = CONFIG.PROJECTS.map((p, i) => `
   <article class="card">
     <a class="browser" href="${p.url}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
       <div class="browser-bar"><i></i><i></i><i></i><span>${p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span></div>
-      <div class="screen" data-bg="${p.img}"${p.tall ? ` data-tall="${p.tall}"` : ''}></div>
+      <div class="screen"${p.tall ? ` style="--tall:url(${p.tall})"` : ''}><img src="${p.img}" alt="Zrzut strony ${p.name}" loading="lazy" decoding="async"></div>
     </a>
     <div>
       <div class="card-top"><h3>${p.name}</h3><span class="card-n">${String(i + 1).padStart(2, '0')}</span></div>
@@ -786,6 +782,13 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { rootMargin: '0px 0px -8% 0px' });
 const watch = () => document.querySelectorAll('.rv:not(.in)').forEach(el => io.observe(el));
 watch();
+// zapasowe odsłanianie – gdyby obserwator się nie odpalił, treść i tak się pokaże
+const reveal = () => document.querySelectorAll('.rv:not(.in)').forEach(el => {
+  if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add('in');
+});
+addEventListener('scroll', reveal, { passive: true });
+addEventListener('load', reveal);
+setTimeout(reveal, 1200);
 
 /* ============================================================
    GALERIA – układ „justified” (jak w Flickr / Google Photos)
