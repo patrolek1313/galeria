@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kasia Chera · fotografia i web design</title>
-<meta name="description" content="Kasia Chera – fotografia off-road, wyścigów ultra i wydarzeń (photobłoto) oraz projektowanie stron internetowych.">
+<meta name="description" content="Kasia Chera - fotografia off-road, wyścigów ultra i wydarzeń (photobłoto) oraz projektowanie stron internetowych.">
 <meta name="theme-color" content="#04140f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://patrolek1313.github.io" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..100,300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,300..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#04140f;          /* prawie czarny szmaragd */
@@ -17,7 +17,7 @@
   --bg-3:#0b2e24;
   --emerald:#0f8a5f;     /* szmaragd */
   --emerald-hi:#19b07b;
-  --lime:#c8f03c;        /* limonka – tylko jako akcent */
+  --lime:#c8f03c;        /* limonka - tylko jako akcent */
   --ink:#eef3ec;
   --muted:rgba(238,243,236,.62);
   --faint:rgba(238,243,236,.14);
@@ -38,7 +38,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::selection{background:var(--lime);color:var(--bg)}
 :focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 
-/* ziarno – odrobina „błota” na całej stronie */
+/* ziarno - odrobina „błota” na całej stronie */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.045;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
@@ -352,12 +352,61 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   .rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ---------- baner oferty ---------- */
+.more-link{padding-top:28px}
+.offer-banner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);margin-top:clamp(64px,8vw,110px);background:var(--bg-2);border:1px solid var(--line);text-decoration:none;color:inherit;overflow:hidden;transition:border-color .3s}
+.offer-banner:hover{border-color:var(--lime)}
+.ob-txt{padding:clamp(28px,4vw,64px);display:flex;flex-direction:column;gap:18px;justify-content:center}
+.ob-txt .h2{margin:0}
+.ob-txt p{color:var(--muted);max-width:30em}
+.ob-txt .btn{align-self:flex-start}
+.ob-img{min-height:280px;background:var(--bg-3)}
+.ob-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.offer-banner:hover .ob-img img{transform:scale(1.04)}
+@media (max-width:820px){.offer-banner{grid-template-columns:1fr}.ob-img{order:-1;aspect-ratio:3/2;min-height:0}}
+/* krótka galeria na stronie głównej - filtry niepotrzebne */
+.filters{display:none}
+
+/* ================= DELIKATNIEJ: szeryf zamiast krzyku, limonka zostaje jako charakter ================= */
+:root{
+  --display:'Cormorant Garamond',Georgia,serif;
+  --ink:#f3efe6;
+  --muted:rgba(243,239,230,.7);
+}
+body::after{opacity:.03}
+.hero h1,.h2,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h3,.flow,.equation,.pillar h3,.quad h4,.offer-types h3,
+.blk h2,.contact h2{text-transform:none;letter-spacing:-.005em;font-weight:500}
+.hero h1{font-size:clamp(3.4rem,9vw,8.4rem);line-height:.92}
+.hero h1 .l{font-style:italic;font-weight:400}
+.h2{font-size:clamp(2.4rem,5.6vw,5.2rem);line-height:1}
+.h2.sm{font-size:clamp(2.1rem,4vw,3.8rem)}
+.h2 .serif{font-size:1em;line-height:1;font-weight:400}
+.card h3,.steps h4,.ev-list h3,.pillar h3{font-weight:600;line-height:1.1}
+.card h3{font-size:clamp(1.8rem,3vw,2.7rem)}
+.steps h4,.ev-list h3,.pillar h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+.quad h4,.offer-types h3{font-weight:600;font-size:1.4rem}
+.ticker span{font-style:italic;font-weight:400}
+.flow,.equation{font-weight:400}
+.stats div,.el b,.pack-price,.offer-types b,.mail{font-weight:500}
+.offer-types b{font-style:italic}
+.serif{font-weight:400}
+.tag,.intro-tag{font-weight:400}
+
+/* hero: trzy role rozdzielone */
+.lead-list{list-style:none;max-width:40em;margin-top:18px;border-top:1px solid var(--line)}
+.lead-list li{border-bottom:1px solid var(--line)}
+.lead-list a{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:16px;align-items:baseline;padding:12px 0;text-decoration:none;transition:color .25s}
+.ll-k{font-stretch:75%;font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lime)}
+.ll-t{color:var(--muted);font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.5;transition:color .25s}
+.lead-list a:hover .ll-t{color:var(--ink)}
+@media (max-width:560px){.lead-list a{grid-template-columns:1fr;gap:4px}}
 </style>
 </head>
 <body>
 
 <header class="top" id="top">
-  <a class="brand" href="#start" aria-label="Kasia Chera photobłoto – początek strony"><img src="img/logo.png" alt="Kasia Chera photobłoto" width="405" height="147"></a>
+  <a class="brand" href="#start" aria-label="Kasia Chera photobłoto - początek strony"><img src="img/logo.png" alt="Kasia Chera photobłoto" width="405" height="147"></a>
   <nav class="nav" id="nav">
     <a href="#foto">Fotografia</a>
     <a href="#web">Web design</a>
@@ -391,7 +440,11 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   <div class="hero-in">
     <div>
       <h1><span>Kasia</span><span class="l">Chera</span></h1>
-      <p class="lead">Fotografuję rajdy i wyścigi off-road, samochody i ludzi, którzy żyją pasją, a także eventy i spotkania. Projektuję strony, które mają charakter. W biznesie prowadzę zmiany, które naprawdę się dzieją.</p>
+      <ul class="lead-list">
+        <li><a href="#foto"><span class="ll-k">Fotografia</span><span class="ll-t">Fotografuję rajdy i wyścigi off-road, samochody i ludzi, którzy żyją pasją, a także eventy, konferencje i spotkania.</span></a></li>
+        <li><a href="#web"><span class="ll-k">Web design</span><span class="ll-t">Projektuję strony, które mają charakter.</span></a></li>
+        <li><a href="#biznes"><span class="ll-k">Biznes</span><span class="ll-t">Prowadzę zmiany, które naprawdę się dzieją.</span></a></li>
+      </ul>
       <div class="btns">
         <a class="btn primary" href="#foto">Zobacz kadry
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
@@ -421,7 +474,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
         <li><a href="#o-mnie"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Założycielka fundacji</a></li>
         <li><a href="#o-mnie"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Współtwórczyni TIYATI</a></li>
       </ul>
-      <p class="form-foot">Każda z tych rubryk karmi pozostałe. Chemia uczy procesu, biznes – decyzji, motorsport – spokoju pod presją, a fotografia – uważności na ludzi.</p>
+      <p class="form-foot">Każda z tych rubryk karmi pozostałe. Chemia uczy procesu, biznes - decyzji, motorsport - spokoju pod presją, a fotografia - uważności na ludzi.</p>
     </div>
   </div>
 </section>
@@ -435,10 +488,10 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
         <h2 class="h2">Nie ustawiam historii. <span class="serif">Łapię moment.</span></h2>
       </div>
       <div>
-        <p>Fotografuję to, co niezwykłe – najczęściej w błocie, kurzu i adrenalinie. Aparat jedzie ze mną wszędzie: na rajdy off-road, wyścigi ultra, wydarzenia i uroczystości. <strong>Dobra fotografia jest jak dobry makijaż: podkreśla piękno, ale nie zagarnia istoty rzeczy.</strong></p>
+        <p>Fotografuję to, co niezwykłe - najczęściej w błocie, kurzu i adrenalinie. Aparat jedzie ze mną wszędzie: na rajdy off-road, wyścigi ultra, wydarzenia i uroczystości. <strong>Dobra fotografia jest jak dobry makijaż: podkreśla piękno, ale nie zagarnia istoty rzeczy.</strong> <a href="oferta.html">Zobacz ofertę sesji i reportaży</a>.</p>
         <div class="stats" id="stats">
-          <div><span data-stat="all">—</span><small>kadrów</small></div>
-          <div><span data-stat="cats">—</span><small>kategorie</small></div>
+          <div><span data-stat="all">-</span><small>kadrów</small></div>
+          <div><span data-stat="cats">-</span><small>kategorie</small></div>
           <div>0%<small>AI w kadrze</small></div>
         </div>
       </div>
@@ -449,6 +502,19 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   <div class="grid" id="grid" aria-live="polite"></div>
   <div class="more" id="more" hidden><button id="moreBtn">Pokaż kolejne <span id="moreN"></span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></div>
+  <div class="more more-link"><a class="btn ghost" href="https://patrolek1313.github.io/galeria/">Zobacz całą galerię</a></div>
+
+  <div class="wrap">
+    <a class="offer-banner rv" href="oferta.html" id="oferta">
+      <div class="ob-txt">
+        <div class="label"><span class="n">01.2</span>Oferta fotograficzna</div>
+        <h3 class="h2 sm">Sesje i reportaże. <span class="serif">Bez krzyku, z charakterem.</span></h3>
+        <p>Eventy biznesowe, imprezy okolicznościowe i sesje wizerunkowe. Jasne pakiety, konkretne liczby, prywatna galeria online.</p>
+        <span class="btn primary">Zobacz ofertę</span>
+      </div>
+      <div class="ob-img"><img src="https://patrolek1313.github.io/galeria/spotkania-i-uroczystosci/duze/spotkania-i-uroczystosci-001.webp" alt="Reportaż z uroczystości" loading="lazy"></div>
+    </a>
+  </div>
 </section>
 
 <!-- WEB DESIGN -->
@@ -465,7 +531,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   </div>
 
   <div class="carousel">
-    <div class="track" id="track" tabindex="0" aria-label="Realizacje – przewiń w poziomie"></div>
+    <div class="track" id="track" tabindex="0" aria-label="Realizacje - przewiń w poziomie"></div>
     <div class="wrap car-ui">
       <div class="car-count" id="carCount">01 <span>/ 05</span></div>
       <div class="car-bar"><i id="carBar"></i></div>
@@ -484,13 +550,13 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
         <p>Nie zaczynam od wyboru szablonu, tylko od człowieka i celu. Każdy etap kończy się konkretnym efektem, który widzisz i akceptujesz, zanim ruszymy dalej. Dzięki temu na końcu nie ma niespodzianek.</p>
       </div>
       <ol class="steps" id="steps">
-$1<li><span class="dot">01</span><div><h4>Rozmowa i analiza</h4><p>Poznaję Ciebie, Twój biznes i ludzi, do których mówisz. Przeglądamy konkurencję i odpowiadamy na pytanie: po co ktoś wejdzie na tę stronę i co ma na niej zrobić?</p><dl><div><dt>Efekt</dt><dd>Brief: cele, odbiorcy i zakres strony</dd></div><div><dt>Twój udział</dt><dd>Rozmowa – najlepiej przy kawie</dd></div></dl></div></li>
-$1<li><span class="dot">02</span><div><h4>Struktura i UX</h4><p>Zanim pojawi się kolor, projektuję logikę: architekturę treści, ścieżki użytkownika i wireframe’y. Wiemy, co jest gdzie i dlaczego.</p><dl><div><dt>Efekt</dt><dd>Mapa strony i makiety układu</dd></div><div><dt>Twój udział</dt><dd>Akceptacja układu</dd></div></dl></div></li>
-$1<li><span class="dot">03</span><div><h4>Treści i zdjęcia</h4><p>Strona jest tak dobra, jak jej treść. Pomagam uporządkować teksty, a zdjęcia mogę zrobić sama – bez stockowych uśmiechów.</p><dl><div><dt>Efekt</dt><dd>Komplet tekstów i zdjęć</dd></div><div><dt>Twój udział</dt><dd>Wiedza o firmie i materiały</dd></div></dl></div></li>
-$1<li><span class="dot">04</span><div><h4>Charakter – projekt UI</h4><p>Kolor, typografia, zdjęcia, przestrzeń i detale. Interfejs spójny z marką, a nie kolejna gotowa strona z internetu.</p><dl><div><dt>Efekt</dt><dd>Projekt kluczowych widoków na komputer i telefon</dd></div><div><dt>Twój udział</dt><dd>Uwagi i akceptacja</dd></div></dl></div></li>
-$1<li><span class="dot">05</span><div><h4>Budowa i ruch</h4><p>Kodowanie, wersja mobilna, animacje i mikrointerakcje. Ruch prowadzi uwagę i buduje hierarchię, a nie tylko „ładnie wygląda”.</p><dl><div><dt>Efekt</dt><dd>Działająca strona w wersji testowej</dd></div><div><dt>Twój udział</dt><dd>Klikasz i komentujesz</dd></div></dl></div></li>
-$1<li><span class="dot">06</span><div><h4>Testy i start</h4><p>Różne urządzenia i przeglądarki, szybkość ładowania, podstawy SEO i formularze. Potem domena, publikacja i analityka.</p><dl><div><dt>Efekt</dt><dd>Strona online</dd></div><div><dt>Twój udział</dt><dd>Zielone światło</dd></div></dl></div></li>
-$1<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończy się na premierze. Jeśli projekt tego wymaga, zostaję przy aktualizacjach, treściach i kolejnych zmianach.</p><dl><div><dt>Efekt</dt><dd>Strona, która rośnie razem z firmą</dd></div><div><dt>Twój udział</dt><dd>Nowe pomysły</dd></div></dl></div></li>
+<li><span class="dot">01</span><div><h4>Rozmowa i analiza</h4><p>Poznaję Ciebie, Twój biznes i ludzi, do których mówisz. Przeglądamy konkurencję i odpowiadamy na pytanie: po co ktoś wejdzie na tę stronę i co ma na niej zrobić?</p><dl><div><dt>Efekt</dt><dd>Brief: cele, odbiorcy i zakres strony</dd></div><div><dt>Twój udział</dt><dd>Rozmowa - najlepiej przy kawie</dd></div></dl></div></li>
+<li><span class="dot">02</span><div><h4>Struktura i UX</h4><p>Zanim pojawi się kolor, projektuję logikę: architekturę treści, ścieżki użytkownika i wireframe’y. Wiemy, co jest gdzie i dlaczego.</p><dl><div><dt>Efekt</dt><dd>Mapa strony i makiety układu</dd></div><div><dt>Twój udział</dt><dd>Akceptacja układu</dd></div></dl></div></li>
+<li><span class="dot">03</span><div><h4>Treści i zdjęcia</h4><p>Strona jest tak dobra, jak jej treść. Pomagam uporządkować teksty, a zdjęcia mogę zrobić sama - bez stockowych uśmiechów.</p><dl><div><dt>Efekt</dt><dd>Komplet tekstów i zdjęć</dd></div><div><dt>Twój udział</dt><dd>Wiedza o firmie i materiały</dd></div></dl></div></li>
+<li><span class="dot">04</span><div><h4>Charakter - projekt UI</h4><p>Kolor, typografia, zdjęcia, przestrzeń i detale. Interfejs spójny z marką, a nie kolejna gotowa strona z internetu.</p><dl><div><dt>Efekt</dt><dd>Projekt kluczowych widoków na komputer i telefon</dd></div><div><dt>Twój udział</dt><dd>Uwagi i akceptacja</dd></div></dl></div></li>
+<li><span class="dot">05</span><div><h4>Budowa i ruch</h4><p>Kodowanie, wersja mobilna, animacje i mikrointerakcje. Ruch prowadzi uwagę i buduje hierarchię, a nie tylko „ładnie wygląda”.</p><dl><div><dt>Efekt</dt><dd>Działająca strona w wersji testowej</dd></div><div><dt>Twój udział</dt><dd>Klikasz i komentujesz</dd></div></dl></div></li>
+<li><span class="dot">06</span><div><h4>Testy i start</h4><p>Różne urządzenia i przeglądarki, szybkość ładowania, podstawy SEO i formularze. Potem domena, publikacja i analityka.</p><dl><div><dt>Efekt</dt><dd>Strona online</dd></div><div><dt>Twój udział</dt><dd>Zielone światło</dd></div></dl></div></li>
+<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończy się na premierze. Jeśli projekt tego wymaga, zostaję przy aktualizacjach, treściach i kolejnych zmianach.</p><dl><div><dt>Efekt</dt><dd>Strona, która rośnie razem z firmą</dd></div><div><dt>Twój udział</dt><dd>Nowe pomysły</dd></div></dl></div></li>
       </ol>
     </div>
   </div>
@@ -551,7 +617,7 @@ $1<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończ
         <div class="label"><span class="n">04</span>Eventy · Rajdy · Motorsport</div>
         <h2 class="h2">Od pomysłu do startu. <span class="serif">I aż do mety.</span></h2>
       </div>
-      <p>Organizuję wydarzenia, które mają zaplecze i duszę: od międzynarodowych konferencji naukowych, przez wydarzenia fundacji, po rajdy i imprezy motorsportowe. Motorsport znam od środka – jako pilot rajdowy, fotografka i organizatorka. <strong>To kierunek, w którym chcę rozwijać nowe projekty.</strong></p>
+      <p>Organizuję wydarzenia, które mają zaplecze i duszę: od międzynarodowych konferencji naukowych, przez wydarzenia fundacji, po rajdy i imprezy motorsportowe. Motorsport znam od środka - jako pilot rajdowy, fotografka i organizatorka. <strong>To kierunek, w którym chcę rozwijać nowe projekty.</strong></p>
     </div>
 
     <div class="ev">
@@ -580,15 +646,15 @@ $1<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończ
 <section class="sec" id="o-mnie">
   <div class="wrap about">
     <figure class="portrait rv">
-      <img src="img/kasia-chera-portret.jpg" alt="Kasia Chera – portret" loading="lazy">
+      <img src="img/kasia-chera-portret.jpg" alt="Kasia Chera - portret" loading="lazy">
       <figcaption>Głowa na szpilkach,<br><em>serce w lesie.</em></figcaption>
     </figure>
     <div class="about-txt rv">
       <div class="label"><span class="n">05</span>O mnie</div>
       <p class="big">Pracuję na styku operacji, transformacji, ludzi i doświadczeń. Lubię sytuacje, w których trzeba połączyć wiele elementów, podjąć decyzję i po prostu dowieźć temat do końca.</p>
       <p>Nie mam jednej zawodowej ścieżki. I właśnie dlatego potrafię patrzeć na problem z kilku stron jednocześnie.</p>
-      <p>„Chera” to skrót imienia mojego ukochanego konia z dzieciństwa. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu – namioty i sprzęt wyprawowy.</p>
-      <p>Jestem Katarzyna Wójcik. Doktor chemii, project managerka, pilot rajdowy, projektantka stron internetowych. Aparat jedzie ze mną wszędzie – w błoto, na wyścigi, na wesela i wydarzenia. Zamykam w kadrach momenty, które wypełniają życie fantastycznymi ludźmi i pięknymi emocjami.</p>
+      <p>„Chera” to skrót imienia mojego ukochanego konia z dzieciństwa. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu - namioty i sprzęt wyprawowy.</p>
+      <p>Jestem Katarzyna Wójcik. Doktor chemii, project managerka, pilot rajdowy, projektantka stron internetowych. Aparat jedzie ze mną wszędzie - w błoto, na wyścigi, na wesela i wydarzenia. Zamykam w kadrach momenty, które wypełniają życie fantastycznymi ludźmi i pięknymi emocjami.</p>
       <p>W czasach, gdy niemal wszystko można wygenerować sztuczną inteligencją, staram się zachować tę odrobinę duszy zamkniętą w kadrze.</p>
       <div class="quad">
         <div><b>01</b><h4>Operations</h4><p>Porządkuję złożone rzeczy, łączę ludzi i procesy, i pilnuję, żeby plan zamienił się w działanie.</p></div>
@@ -636,10 +702,10 @@ $1<li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończ
 
 <script>
 /* ============================================================
-   USTAWIENIA – to jest jedyne miejsce, które trzeba edytować
+   USTAWIENIA - to jest jedyne miejsce, które trzeba edytować
    ============================================================ */
 const CONFIG = {
-  // repozytorium z galerią (GitHub Pages) – tam leży manifest.json
+  // repozytorium z galerią (GitHub Pages) - tam leży manifest.json
   BASE: 'https://patrolek1313.github.io/galeria/',
   // zdjęcia w nagłówku (ścieżki z manifestu, wersje "duze")
   HERO: [
@@ -650,7 +716,11 @@ const CONFIG = {
     ['off-road/duze/off-road-074.webp', 'Off-road'],
   ],
   HERO_MS: 6000,
-  PAGE: 36,                // ile zdjęć dokładać na raz
+  PAGE: 36,
+  // krótka galeria: ile zdjęć z każdej kategorii na stronie głównej
+  NA_KATEGORIE: 3,
+  // opcjonalnie: wybrane numery zdjęć, np. 'off-road': [12, 40, 86]
+  WYBRANE: {},                // ile zdjęć dokładać na raz
   TICKER: ['Photobłoto', 'Off-road', 'Web design', 'Business acumen', 'Transformacja', 'Rajdy i eventy', 'Serce w lesie'],
   PROJECTS: [
     { name: 'Aquanano', url: 'https://aquanano.pl/', type: 'Web design · UX / UI',
@@ -658,7 +728,7 @@ const CONFIG = {
       img: 'https://chera13kasia.lovable.app/__l5e/assets-v1/49bd65a2-44ec-4f57-be08-12fdbd804803/aquanano-website.jpg',
       tall: 'https://kasiachera1.lovable.app/__l5e/assets-v1/16533e32-aaec-4532-ac4e-20938da886e8/aquanano-preview.jpg' },
     { name: 'MOSFY / King of Poland', url: 'https://mosfy.pl/', type: 'Web experience · Event',
-      desc: 'Strona wydarzenia Ultra4 King of Poland – motorsport, który ma być czuć już na ekranie.',
+      desc: 'Strona wydarzenia Ultra4 King of Poland - motorsport, który ma być czuć już na ekranie.',
       img: 'https://chera13kasia.lovable.app/__l5e/assets-v1/0bc5fe12-8585-498d-b246-31b79a84f342/mosfy-website.jpg',
       tall: 'https://kasiachera1.lovable.app/__l5e/assets-v1/28eb801d-df95-44ef-99d1-29a8e76cf7fb/mosfy-preview.jpg' },
     { name: 'WN Serwis', url: 'https://wnserwis.pl/', type: 'Web design · Content',
@@ -670,7 +740,7 @@ const CONFIG = {
       img: 'https://chera13kasia.lovable.app/__l5e/assets-v1/0b532a91-358e-48ed-aa8d-ef104a9f500e/dorotamakeup-website.jpg',
       tall: 'https://kasiachera1.lovable.app/__l5e/assets-v1/13945a6c-9b8c-4287-a6e8-4cd0666833f2/dorotamakeup-preview.jpg' },
     { name: 'MotoMind & Heart', url: 'https://fundacjammh.lovable.app/', type: 'Web · Social impact',
-      desc: 'Strona fundacji na rzecz bezpieczeństwa – od edukacji kierowców po kampanie społeczne.',
+      desc: 'Strona fundacji na rzecz bezpieczeństwa - od edukacji kierowców po kampanie społeczne.',
       img: 'https://chera13kasia.lovable.app/__l5e/assets-v1/b08e71f2-e169-4630-b5d4-8ab01c7b9a53/portfolio-motomind.jpg' },
   ],
 };
@@ -822,7 +892,7 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { rootMargin: '0px 0px -8% 0px' });
 const watch = () => document.querySelectorAll('.rv:not(.in)').forEach(el => io.observe(el));
 watch();
-// zapasowe odsłanianie – gdyby obserwator się nie odpalił, treść i tak się pokaże
+// zapasowe odsłanianie - gdyby obserwator się nie odpalił, treść i tak się pokaże
 const reveal = () => document.querySelectorAll('.rv:not(.in)').forEach(el => {
   if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add('in');
 });
@@ -831,7 +901,7 @@ addEventListener('load', reveal);
 setTimeout(reveal, 1200);
 
 /* ============================================================
-   GALERIA – układ „justified” (jak w Flickr / Google Photos)
+   GALERIA - układ „justified” (jak w Flickr / Google Photos)
    Proporcje są znane z manifestu, więc nic nie skacze przy ładowaniu.
    ============================================================ */
 const G = { all: [], cats: [], list: [], shown: 0, filter: 'all', tiles: new Map() };
@@ -852,7 +922,7 @@ function makeTile(p) {
   t = document.createElement('button');
   t.className = 'tile';
   t.style.backgroundImage = `url(${p.placeholder})`;
-  t.setAttribute('aria-label', `${p.cat} – zdjęcie ${p.n}. Otwórz powiększenie`);
+  t.setAttribute('aria-label', `${p.cat} - zdjęcie ${p.n}. Otwórz powiększenie`);
   const img = document.createElement('img');
   img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
   img.srcset = `${CONFIG.BASE + p.mini} 700w, ${CONFIG.BASE + p.duze} 1600w`;
@@ -926,8 +996,13 @@ fetch(CONFIG.BASE + 'manifest.json')
       name: k.kategoria, slug: k.slug,
       items: k.zdjecia.map((z, i) => ({ ...z, id: k.slug + i, n: i + 1, cat: k.kategoria, ar: z.szerokosc / z.wysokosc }))
     }));
+    const total = G.cats.reduce((n, c) => n + c.items.length, 0);
+    G.cats.forEach(c => {
+      const w = CONFIG.WYBRANE[c.slug];
+      c.items = w ? w.map(n => c.items[n - 1]).filter(Boolean) : c.items.slice(0, CONFIG.NA_KATEGORIE);
+    });
     G.all = interleave(G.cats);
-    $('[data-stat="all"]').textContent = G.all.length;
+    $('[data-stat="all"]').textContent = total;
     $('[data-stat="cats"]').textContent = G.cats.length;
     $('#filters').innerHTML =
       `<button class="chip" data-slug="all">Wszystkie <sup>${G.all.length}</sup></button>` +
@@ -951,7 +1026,7 @@ function render() {
   lbImg.width = p.szerokosc; lbImg.height = p.wysokosc;
   lbImg.onload = () => lbImg.classList.add('ok');
   lbImg.src = CONFIG.BASE + p.duze;
-  lbImg.alt = `${p.cat} – zdjęcie ${p.n}`;
+  lbImg.alt = `${p.cat} - zdjęcie ${p.n}`;
   $('#lbCount').innerHTML = `${String(cur + 1).padStart(3, '0')} <span>/ ${String(G.list.length).padStart(3, '0')}</span>`;
   $('#lbCat').textContent = p.cat;
   [1, -1, 2].forEach(d => { const q = G.list[(cur + d + G.list.length) % G.list.length]; new Image().src = CONFIG.BASE + q.duze; });
@@ -966,7 +1041,7 @@ function openLb(i) {
 function closeLb() {
   lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-  // jeśli ktoś przewinął daleko w lightboxie – dołóż kafelki, żeby było do czego wrócić
+  // jeśli ktoś przewinął daleko w lightboxie - dołóż kafelki, żeby było do czego wrócić
   if (cur >= G.shown) { G.shown = Math.min(cur + 1 + CONFIG.PAGE - ((cur + 1) % CONFIG.PAGE), G.list.length); layout(); }
   const t = G.tiles.get(G.list[cur].id);
   (t || lastFocus)?.focus({ preventScroll: false });
