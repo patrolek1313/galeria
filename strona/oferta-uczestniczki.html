@@ -6,15 +6,15 @@
 <title>Oferta dla uczestniczek · Kasia Chera</title>
 <meta name="description" content="Sesje wizerunkowe, reportaż z wydarzeń biznesowych i okolicznościowych, rolki. Kasia Chera - fotografia, Warszawa i okolice.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#04140f">
+<meta name="theme-color" content="#13201a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..100,300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#04140f;--bg-2:#07201a;--bg-3:#0b2e24;
+  --bg:#13201a;--bg-2:#07201a;--bg-3:#0b2e24;
   --emerald:#0f8a5f;--lime:#c8f03c;--ink:#eef3ec;
-  --muted:rgba(238,243,236,.68);--faint:rgba(238,243,236,.14);--line:rgba(238,243,236,.12);
+  --muted:rgba(245,240,232,.68);--faint:rgba(245,240,232,.14);--line:rgba(245,240,232,.12);
   --pad:clamp(16px,4vw,56px);
   --display:'Archivo Black',Impact,sans-serif;
   --sans:'Archivo',system-ui,sans-serif;
@@ -35,7 +35,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;op
 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
 
 /* nagłówek */
-.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px var(--pad);background:rgba(4,20,15,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px var(--pad);background:rgba(19,32,26,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .brand{text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
 .brand img{height:44px;width:auto}
 .brand b{font-family:var(--display);font-weight:400;font-size:1.02rem}
@@ -52,7 +52,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;op
 .btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-stretch:80%;font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;padding:15px 22px;border-radius:99px;min-height:48px;transition:background .25s,color .25s,transform .25s}
 .btn.primary{background:var(--lime);color:var(--bg)}
 .btn.primary:hover{background:var(--ink);transform:translateY(-2px)}
-.btn.ghost{border:1px solid rgba(238,243,236,.35)}
+.btn.ghost{border:1px solid rgba(245,240,232,.35)}
 .btn.ghost:hover{border-color:var(--lime);color:var(--lime)}
 
 /* hero */
@@ -115,12 +115,52 @@ footer a{text-decoration:none}
 footer a:hover{color:var(--lime)}
 .old{font-size:1rem;color:var(--muted);text-decoration:line-through;margin-left:10px;font-family:var(--sans)}
 .perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px;margin-top:6px}
+
+/* ================= STYL KASIA CHERA: las, krem i limonka - elegancko, bez krzyku =================
+   Akcent ustawia jedna zmienna --lime (nazwa historyczna). Złoto zamiast limonki: --lime:#c9a46a */
+:root{
+  --bg:#13201a;--bg-2:#1c2d24;--bg-3:#22362b;
+  --emerald:#5f8a6f;--lime:#c8f03c;
+  --ink:#f5f0e8;--muted:rgba(245,240,232,.74);
+  --faint:rgba(245,240,232,.16);--line:rgba(245,240,232,.12);
+  --display:'Cormorant Garamond',Georgia,serif;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Josefin Sans',system-ui,sans-serif;
+}
+body{font-weight:300}
+body::after{opacity:.025}
+strong,b{font-weight:600}
+/* nagłówki: szeryf, zwykłe litery, spokojny rytm */
+h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h3,.flow,.equation,.pillar h3,.quad h4,
+.blk h2,.contact h2,.offer-types h3{text-transform:none!important;letter-spacing:0!important}
+.hero h1{font-weight:500;font-size:clamp(3.4rem,9vw,8.2rem);line-height:.95}
+.hero h1 .l{font-style:italic;font-weight:400}
+.h2,.blk h2,.contact h2{font-weight:500!important;font-size:clamp(2.3rem,5.2vw,4.8rem)!important;line-height:1.02!important}
+.h2.sm{font-size:clamp(2.1rem,4vw,3.6rem)!important}
+.h2 .serif,.blk h2 .serif,.contact h2 .serif{font-size:1em;line-height:1;font-style:italic;font-weight:400}
+.card h3,.steps h4,.ev-list h3,.pillar h3,.quad h4,.offer-types h3{font-weight:600;line-height:1.12}
+.card h3{font-size:clamp(1.8rem,3vw,2.6rem)}
+.steps h4,.ev-list h3,.pillar h3{font-size:clamp(1.5rem,2.4vw,1.95rem)}
+.quad h4{font-size:1.35rem}
+.ticker span{font-style:italic;font-weight:400}
+.flow,.equation{font-weight:400}
+.stats div,.el b,.pack-price,.pack .price,.mail,.card .k,.offer-types b{font-weight:500}
+.card .k{font-style:italic}
+.serif,.tag,.intro-tag,.intro-tag span,.intro-tag em{font-weight:400}
+.intro-tag{font-size:clamp(2.4rem,6.8vw,5.6rem)}
+/* drobne etykiety i menu: Josefin, rozstrzelone */
+.label,.nav a,.btn,.chip,.tab,.badge,.pack-name,.pack .name,.ll-k,.lb-cat,.lb-hint,.intro-go,.hero-meta,.stats small,.more button,.car-hint{font-stretch:normal;letter-spacing:.2em}
+.label,.ll-k{font-weight:400}
+.btn,.nav .cta,.chip,.tab,.more button,.badge{border-radius:2px}
+.btn{font-weight:600}
+.btn.ghost{border-color:rgba(245,240,232,.4)}
+.brand img{height:56px;width:auto}
 </style>
 </head>
 <body>
 
 <header class="top">
-  <a class="brand" href="index.html"><img src="logo.png" alt="Kasia Chera photobłoto"><b>KasiaChera</b><i>fotografia</i></a>
+  <a class="brand" href="index.html"><img src="img/logo-photography.png" alt="Kasia Chera Photography - strona główna" width="632" height="223"></a>
   <nav class="nav" aria-label="Menu">
     <a class="hide-m" href="oferta.html">Pełna oferta</a>
     <a class="cta" href="#pakiety">Wybierz pakiet</a>
