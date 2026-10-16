@@ -434,6 +434,30 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 /* sekcja fotografia: krótka historia */
 .sec-head p.story{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.45;color:var(--ink);margin-bottom:18px;max-width:30em}
 
+/* przycisk oferty - nawiązanie do aparatu (przysłona + ramka kadru) */
+.ap{width:18px;height:18px;flex:none}
+.nav .nav-oferta{display:inline-flex;align-items:center;gap:8px;opacity:1;color:var(--lime);border:1px solid rgba(200,240,60,.55);padding:8px 14px;border-radius:2px;transition:background .25s,color .25s}
+.nav .nav-oferta:hover{background:var(--lime);color:var(--bg)}
+.nav .nav-oferta:hover .ap{transform:rotate(60deg)}
+.nav .nav-oferta .ap{transition:transform .5s ease}
+.foto-cta{position:fixed;right:clamp(14px,2.5vw,32px);bottom:clamp(14px,2.5vw,32px);z-index:70;display:flex;align-items:center;gap:12px;padding:14px 20px 14px 16px;background:rgba(19,32,26,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);text-decoration:none;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s,transform .4s}
+.foto-cta.show{opacity:1;transform:none;pointer-events:auto}
+.foto-cta .ap{width:28px;height:28px;color:var(--lime);transition:transform .6s ease}
+.foto-cta:hover .ap{transform:rotate(60deg)}
+.fc-t{display:flex;flex-direction:column;line-height:1.15}
+.fc-t b{font-family:var(--serif);font-weight:500;font-size:1.3rem;letter-spacing:0}
+.fc-t small{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.fc-c{position:absolute;width:12px;height:12px;border-color:var(--lime);border-style:solid;border-width:0;transition:all .35s ease}
+.fc-c.tl{top:0;left:0;border-top-width:1.5px;border-left-width:1.5px}
+.fc-c.tr{top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
+.fc-c.bl{bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
+.fc-c.br{bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
+.foto-cta:hover .fc-c{width:18px;height:18px}
+.foto-cta:hover .fc-t b{color:var(--lime)}
+@media (max-width:980px){.nav .nav-oferta{font-family:var(--sans);font-size:1rem;padding:12px 20px}}
+@media (max-width:560px){.foto-cta{padding:11px 16px 11px 12px;gap:10px}.foto-cta .ap{width:24px;height:24px}.fc-t b{font-size:1.15rem}}
+@media (prefers-reduced-motion:reduce){.foto-cta,.foto-cta .ap,.fc-c{transition:none}}
+
 /* intro: nie przesuwa się, tylko znika */
 @media (prefers-reduced-motion:no-preference){
   .intro{height:85svh}
@@ -453,6 +477,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
     <a href="#biznes">Biznes</a>
     <a href="#eventy">Eventy</a>
     <a href="#o-mnie">O mnie</a>
+    <a href="oferta.html" class="nav-oferta"><svg class="ap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.3 3.3 8.5 13.3M20.7 9.6H9.2M18.6 18.1 12.9 8.1M9.7 20.7l5.8-10M3.3 14.4h11.5M5.4 5.9l5.7 10"/></svg>Oferta foto</a>
     <a href="#kontakt" class="cta">Napisz do mnie</a>
   </nav>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
@@ -1114,6 +1139,18 @@ $('#lbStage').addEventListener('pointerup', e => {
   if (sx === null) return; const dx = e.clientX - sx; sx = null;
   if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
 });
+</script>
+<a class="foto-cta" id="fotoCta" href="oferta.html" aria-label="Oferta fotograficzna: sesje i reportaże">
+  <span class="fc-c tl"></span><span class="fc-c tr"></span><span class="fc-c bl"></span><span class="fc-c br"></span>
+  <svg class="ap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.3 3.3 8.5 13.3M20.7 9.6H9.2M18.6 18.1 12.9 8.1M9.7 20.7l5.8-10M3.3 14.4h11.5M5.4 5.9l5.7 10"/></svg><span class="fc-t"><b>Oferta foto</b><small>sesje · reportaże</small></span>
+</a>
+<script>
+(() => {
+  const b = document.getElementById('fotoCta'), intro = document.querySelector('.intro');
+  const lim = () => (intro ? intro.offsetHeight : innerHeight) * .9;
+  const on = () => b.classList.toggle('show', scrollY > lim());
+  addEventListener('scroll', on, { passive: true }); on();
+})();
 </script>
 </body>
 </html>
