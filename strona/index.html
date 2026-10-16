@@ -554,7 +554,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
         <p>Eventy biznesowe, imprezy okolicznościowe i sesje wizerunkowe. Jasne pakiety, konkretne liczby, prywatna galeria online.</p>
         <span class="btn primary">Zobacz ofertę</span>
       </div>
-      <div class="ob-img"><img src="https://patrolek1313.github.io/galeria/spotkania-i-uroczystosci/duze/spotkania-i-uroczystosci-001.webp" alt="Reportaż z uroczystości" loading="lazy"></div>
+      <div class="ob-img"><img src="https://patrolek1313.github.io/galeria/spotkania-i-wydarzenia/duze/spotkania-i-wydarzenia-001.webp" alt="Reportaż ze spotkania" loading="lazy"></div>
     </a>
   </div>
 </section>
@@ -954,7 +954,7 @@ const grid = $('#grid'), more = $('#more');
 
 // „Wszystkie” = kategorie przeplecione proporcjonalnie do liczby zdjęć,
 // żeby małe kategorie nie zdominowały początku; akcja (off-road, ultra) idzie pierwsza
-const ORDER = ['off-road', 'wyscigi-ultra', 'wydarzenia', 'spotkania-i-uroczystosci'];
+const ORDER = ['off-road', 'wyscigi-ultra', 'wyprawy', 'ludzie-z-pasja', 'spotkania-i-wydarzenia', 'konferencje-i-szkolenia'];
 function interleave(cats) {
   const rank = s => { const i = ORDER.indexOf(s); return i < 0 ? 99 : i; };
   return cats.flatMap(c => c.items.map((p, i) => ({ p, k: (i + 0.5) / c.items.length, r: rank(c.slug) })))
