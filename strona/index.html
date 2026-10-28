@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kasia Chera · fotografia i web design</title>
-<meta name="description" content="Kasia Chera - fotografia off-road, wyścigów ultra i wydarzeń (photobłoto) oraz projektowanie stron internetowych.">
+<title>Chera Lab · fotografia, strony i AI dla firm</title>
+<meta name="description" content="Chera Lab - Katarzyna Wójcik: fotografia off-road, wyścigów ultra i wydarzeń (Chera Photography), projektowanie stron internetowych i AI dla małych firm.">
 <meta name="theme-color" content="#13201a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -364,7 +364,12 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 .ob-img{min-height:280px;background:var(--bg-3)}
 .ob-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .offer-banner:hover .ob-img img{transform:scale(1.04)}
-@media (max-width:820px){.offer-banner{grid-template-columns:1fr}.ob-img{order:-1;aspect-ratio:3/2;min-height:0}}
+.ob-facts{display:flex;flex-direction:column;justify-content:center;gap:0;padding:clamp(24px,3vw,48px)}
+.ob-facts div{display:flex;flex-direction:column;gap:4px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ob-facts div:last-child{border:0}
+.ob-facts b{font-family:var(--serif);font-size:clamp(1.8rem,2.6vw,2.4rem);font-weight:500;line-height:1;color:var(--lime)}
+.ob-facts span{color:var(--muted);font-size:.95rem}
+@media (max-width:820px){.offer-banner{grid-template-columns:1fr}.ob-img{order:-1;aspect-ratio:3/2;min-height:0}.ob-facts{order:0;aspect-ratio:auto}}
 /* krótka galeria na stronie głównej - filtry niepotrzebne */
 .filters{display:none}
 
@@ -377,7 +382,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 .lead-list a:hover .ll-t{color:var(--ink)}
 @media (max-width:560px){.lead-list a{grid-template-columns:1fr;gap:4px}}
 
-/* ================= STYL KASIA CHERA: las, krem i limonka - elegancko, bez krzyku =================
+/* ================= STYL CHERA LAB: las, krem i limonka - elegancko, bez krzyku =================
    Akcent ustawia jedna zmienna --lime. Złoto zamiast limonki: --lime:#c9a46a */
 :root{
   --bg:#13201a;--bg-2:#1c2d24;--bg-3:#22362b;
@@ -427,8 +432,9 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 .card.next b{font-size:clamp(1.7rem,2.8vw,2.4rem)}
 
 /* logotypy */
-.brand img{height:64px}
-.top.solid .brand img{height:50px}
+.brand img{height:78px}
+.top.solid .brand img{height:62px}
+@media (max-width:760px){.brand img{height:62px}.top.solid .brand img{height:54px}}
 .sec-logo{height:clamp(84px,9vw,120px);width:auto;margin-bottom:22px}
 
 /* sekcja fotografia: krótka historia */
@@ -470,7 +476,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 <body>
 
 <header class="top" id="top">
-  <a class="brand" href="#start" aria-label="Kasia Chera portfolio - początek strony"><img src="img/logo-portfolio.png" alt="Kasia Chera portfolio" width="632" height="223"></a>
+  <a class="brand" href="#start" aria-label="Chera Lab - początek strony"><img src="img/logo-chera-lab.png" alt="Chera Lab" width="679" height="375"></a>
   <nav class="nav" id="nav">
     <a href="#foto">Fotografia</a>
     <a href="#web">Web design</a>
@@ -478,6 +484,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
     <a href="#eventy">Eventy</a>
     <a href="#o-mnie">O mnie</a>
     <a href="oferta.html" class="nav-oferta"><svg class="ap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.3 3.3 8.5 13.3M20.7 9.6H9.2M18.6 18.1 12.9 8.1M9.7 20.7l5.8-10M3.3 14.4h11.5M5.4 5.9l5.7 10"/></svg>Oferta foto</a>
+    <a href="ai-dla-firm.html">Dla firm</a>
     <a href="#kontakt" class="cta">Napisz do mnie</a>
   </nav>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
@@ -504,7 +511,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
   <div class="slides" id="slides" aria-hidden="true"></div>
   <div class="hero-in">
     <div>
-      <h1><span>Kasia</span><span class="l">Chera</span></h1>
+      <h1><span>Chera</span><span class="l">Lab</span></h1>
       <ul class="lead-list">
         <li><a href="#foto"><span class="ll-k">Fotografia</span><span class="ll-t">Fotografuję rajdy i wyścigi off-road, samochody i ludzi, którzy żyją pasją, a także eventy, konferencje i spotkania.</span></a></li>
         <li><a href="#web"><span class="ll-k">Web design</span><span class="ll-t">Projektuję strony, które mają charakter.</span></a></li>
@@ -549,8 +556,8 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
   <div class="wrap">
     <div class="sec-head rv">
       <div>
-        <img class="sec-logo" src="img/logo-photography.png" alt="Kasia Chera Photography" width="632" height="223" loading="lazy">
-        <div class="label"><span class="n">01</span>Fotografia · Photobłoto</div>
+        <img class="sec-logo" src="img/logo-chera-photography.png" alt="Chera Photography" width="679" height="368" loading="lazy">
+        <div class="label"><span class="n">01</span>Fotografia · Chera Photography</div>
         <h2 class="h2">Nie ustawiam historii. <span class="serif">Łapię moment.</span></h2>
       </div>
       <div>
@@ -626,6 +633,20 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 <li><span class="dot">07</span><div><h4>Rozwój</h4><p>Dobra strona nie kończy się na premierze. Jeśli projekt tego wymaga, zostaję przy aktualizacjach, treściach i kolejnych zmianach.</p><dl><div><dt>Efekt</dt><dd>Strona, która rośnie razem z firmą</dd></div><div><dt>Twój udział</dt><dd>Nowe pomysły</dd></div></dl></div></li>
       </ol>
     </div>
+
+    <a class="offer-banner rv" href="ai-dla-firm.html" id="dla-firm">
+      <div class="ob-txt">
+        <div class="label"><span class="n">02.2</span>AI dla małej firmy</div>
+        <h3 class="h2 sm">Strona, automatyzacje i AI. <span class="serif">Zrobione za Ciebie.</span></h3>
+        <p>Rezerwacje bez telefonu, asystent AI na stronie, oferty i wyceny z szablonów, szkolenie zespołu. W 2-3 tygodnie, w stałej cenie.</p>
+        <span class="btn primary">Zobacz ofertę dla firm</span>
+      </div>
+      <div class="ob-img ob-facts">
+        <div><b>od 2 400 zł</b><span>strona-wizytówka w 7 dni</span></div>
+        <div><b>5 900 zł</b><span>strona, automatyzacja i szkolenie</span></div>
+        <div><b>390 zł / mies.</b><span>opieka i rozwój</span></div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -713,14 +734,14 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 <section class="sec" id="o-mnie">
   <div class="wrap about">
     <figure class="portrait rv">
-      <img src="img/kasia-chera-portret.jpg" alt="Kasia Chera - portret" loading="lazy">
+      <img src="img/kasia-chera-portret.jpg" alt="Katarzyna Wójcik - Chera Lab, portret" loading="lazy">
       <figcaption>Głowa na szpilkach,<br><em>serce w lesie.</em></figcaption>
     </figure>
     <div class="about-txt rv">
       <div class="label"><span class="n">05</span>O mnie</div>
       <p class="big">Pracuję na styku operacji, transformacji, ludzi i doświadczeń. Lubię sytuacje, w których trzeba połączyć wiele elementów, podjąć decyzję i po prostu dowieźć temat do końca.</p>
       <p>Nie mam jednej zawodowej ścieżki. I właśnie dlatego potrafię patrzeć na problem z kilku stron jednocześnie.</p>
-      <p>„Chera” to skrót imienia mojego ukochanego konia z dzieciństwa. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu - namioty i sprzęt wyprawowy.</p>
+      <p>„Chera” to skrót imienia mojego ukochanego konia z dzieciństwa. Od podstawówki wszyscy tak na mnie mówią - dziś to nazwa mojej marki: Chera Lab. Offroad i photobłoto przyszły chwilę później, całkiem naturalnie. W szafie milion sukienek, w garażu - namioty i sprzęt wyprawowy.</p>
       <p>Jestem Katarzyna Wójcik. Doktor chemii, project managerka, pilot rajdowy, projektantka stron internetowych. Aparat jedzie ze mną wszędzie - w błoto, na wyścigi, na wesela i wydarzenia. Zamykam w kadrach momenty, które wypełniają życie fantastycznymi ludźmi i pięknymi emocjami.</p>
       <p>W czasach, gdy niemal wszystko można wygenerować sztuczną inteligencją, staram się zachować tę odrobinę duszy zamkniętą w kadrze.</p>
       <div class="quad">
@@ -748,8 +769,8 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
 </main>
 
 <footer>
-  <span>© <span id="yr"></span> Katarzyna Wójcik · Kasia Chera</span>
-  <span>Wszystkie zdjęcia: photobłoto</span>
+  <span>© <span id="yr"></span> Chera Lab · Katarzyna Wójcik</span>
+  <span>Wszystkie zdjęcia: Chera Photography</span>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -764,7 +785,7 @@ h1,h2,h3,h4,.h2,.hero h1,.ticker span,.card h3,.card.next b,.steps h4,.ev-list h
     <div class="lb-frame" id="lbFrame"><img id="lbImg" alt=""></div>
     <button class="lb-btn lb-nav lb-next" id="lbNext" aria-label="Następne"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
-  <div class="lb-bot"><span class="lb-hint">← → przełączaj · Esc zamknij</span><span class="lb-hint">photobłoto © Kasia Chera</span></div>
+  <div class="lb-bot"><span class="lb-hint">← → przełączaj · Esc zamknij</span><span class="lb-hint">© Chera Photography</span></div>
 </div>
 
 <script>
